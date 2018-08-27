@@ -1,6 +1,6 @@
 ## DISPOSITIVO DE SEGURANÇA VEICULAR COM LEITURA DE EXPRESSÃO FACIAL PARA PREVENÇÃO DE ACIDENTES POR SONO AO VOLANTE
 
-Esse protótipo de segurança veicular foi um trabalho de conclusão de curso que foi engrenado em pesquisa acadêmica pela Faculdade Salesiana Maria Auxiliadora. Tendo como participantes: Almerindo Abreu, Raphael Marques e como Orientador, o DSc Irineu Neto.
+Este repositório é referente ao código do protótipo de segurança veicular que foi o propósito do trabalho de conclusão de curso que em seguida engrenou na pesquisa acadêmica da Faculdade Salesiana Maria Auxiliadora. Tendo como participantes: Almerindo Abreu, Raphael Marques e como Orientador, o DSc Irineu Neto.
 
 [Pesquisa Acadêmica - Faculdade Salesiana Maria Auxiliadora](http://www.fsma.edu.br/site/projetos/prototipacao-de-um-sistema-de-seguranca-veicular-para-alertas-contra-o-sono-e-cansaco-via-reconhecimento-de-imagens/)
 
