@@ -8,6 +8,7 @@ from PyQt5.Qt import QTime, QThread, pyqtSignal, QPixmap
 import pyqtgraph as pg
 import dlib, time, cv2
 import numpy as np
+import playsound
 from imutils import face_utils
 import imutils
 from scipy.spatial import distance
@@ -17,7 +18,6 @@ from PyQt5.QtGui import QImage
 from MensagemFalada import MensagemFalada
 from AnalisePERCLOS import AnalisePERCLOS
 from ArquivoCalibracao import ArquivoCalibracao
-from Alerta import Alerta
 
 class ExecucaoPERCLOS(QThread):
     #Capitura de Imagem
@@ -43,7 +43,6 @@ class ExecucaoPERCLOS(QThread):
         arquivoCalibracao = ArquivoCalibracao()
         self.valorMaximo, self.valorMinimo, self.nome = arquivoCalibracao.abrirArquivoCalibracao()
         
-        self.alerta = Alerta()
         
     def __del__(self):
         self.wait()
@@ -86,24 +85,20 @@ class ExecucaoPERCLOS(QThread):
                 
                 self.plotarExecucao.emit(grafico.getPlotItem())
                 
-                #Verificar e Alertar
+                # Verificar e Alertar
                 if (eixoY_graficoDeExecucao[-1] < self.threshold):
                     print("PERCLOS: " + str(eixoY_graficoDeExecucao[-1]))
                     janelaBaixoPERCLOS += 1
                     if (janelaBaixoPERCLOS > 15):
-                        #mixer.music.load("Beep\\beep.mp3")
-                        #mixer.music.play()
-                        self.alerta.start()
-                        if (janelaBaixoPERCLOS > 15 and janelaBaixoPERCLOS%16 == 0):
+                        
+                        self.alerta("Beep\\beep.mp3")
+                        
+                        if (janelaBaixoPERCLOS > 15 and janelaBaixoPERCLOS % 25 == 0):
                             self.judite.scriptAlerta()
-                                                      
+                            
                 else:
                     janelaBaixoPERCLOS = 0
                     
-            #cv2.imshow("Frame", frameRedimencionado)
-            #convertToQtFormat = QImage(rgbImage.data, rgbImage.shape[1], rgbImage.shape[0], QImage.Format_RGB888)
-            #convertToQtFormat = QPixmap.fromImage(convertToQtFormat)
-            #imagemDeExecucao = convertToQtFormat.scaled(357, 273, Qt.KeepAspectRatio)
             height, width, channel = rgbImage.shape
             bytesPerLine = 3 * width
             convertToQtFormat = QImage(rgbImage.data, width, height, bytesPerLine, QImage.Format_RGB888)
@@ -148,3 +143,7 @@ class ExecucaoPERCLOS(QThread):
         grafico.plot(xExecucao, yExcucao, pen=pg.mkPen('b'))
                     
         return grafico
+    
+    def alerta(self, path):
+        # play an alarm sound
+        playsound.playsound(path)
