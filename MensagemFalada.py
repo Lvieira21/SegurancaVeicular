@@ -12,7 +12,7 @@ class MensagemFalada(object):
     classdocs
     '''
     def __init__(self):
-        mixer.init(24100)
+        mixer.init(48000)
         
     def scriptInicial(self):
         mixer.music.load("Mensagens Faladas\\boas-vindas.mp3")
