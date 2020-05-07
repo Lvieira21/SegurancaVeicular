@@ -20,7 +20,7 @@ from AnalisePERCLOS import AnalisePERCLOS
 from ArquivoCalibracao import ArquivoCalibracao
 
 class ExecucaoPERCLOS(QThread):
-    #Capitura de Imagem
+    #Captura de Imagem
     changePixmap = pyqtSignal(QPixmap)
     #Contador para calcular o FPS
     contadorLoop = pyqtSignal(str)
@@ -35,7 +35,7 @@ class ExecucaoPERCLOS(QThread):
         QThread.__init__(self, parent=parent)
         self.threshold = 70
         
-        self.arq_predicao = "shape_predictor_68_face_landmarks.dat"
+        self.arq_predicao = "IAs\\shape_predictor_68_face_landmarks.dat"
         self.detector = dlib.get_frontal_face_detector()
         self.predicao = dlib.shape_predictor(self.arq_predicao)
         self.judite = MensagemFalada()
@@ -74,7 +74,7 @@ class ExecucaoPERCLOS(QThread):
                 
                 #Pintar os landmark points do rosto
                 for (x, y) in self.shape:
-                    cv2.circle(rgbImage, (x, y), 4, (0, 0, 255), -1)
+                    cv2.circle(rgbImage, (x, y), 2, (0, 0, 255), -1)
                 
                 threshold_porcento.append(self.threshold)
                 

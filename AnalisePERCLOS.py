@@ -5,43 +5,43 @@ from MensagemFalada import MensagemFalada
 
 class AnalisePERCLOS(object):
     
-    #Calculando a Razão de Aspecto
+    #Calculando a RazÃ£o de Aspecto
     def razaoDeAspecto(self, shape):
         
-        #RAD = RAZÃO DE ASPECTO DIREITA
+        #RAD = RAZÃƒO DE ASPECTO DIREITA
         distVerticalDir = distance.euclidean((shape[43] + shape[44]) // 2, (shape[47] + shape[46]) // 2) 
         distHorizontalDir = distance.euclidean(shape[42], shape[45])
         rad = distVerticalDir / distHorizontalDir
         
-        #RAE = RAZÃO DE ASPECTO ESQUERDA
+        #RAE = RAZÃƒO DE ASPECTO ESQUERDA
         distVerticalEsq = distance.euclidean((shape[37] + shape[38]) // 2, (shape[41] + shape[40]) // 2) 
         distHorizontalEsq = distance.euclidean(shape[36], shape[39])
         rae = distVerticalEsq / distHorizontalEsq
-       
+        
         ra = (rad + rae) / 2
         return ra
     
-    #Calcular desvio padrão
+    #Calcular desvio padrÃ£o
     def desvioPadrao(self, indiceFrameCalibragem, matrizRA):
         variancia, media = 0, 0
         count = 0
         
-        #Calculo da média
+        #Calculo da mÃ©dia
         for i in range(indiceFrameCalibragem + 1):
             media += matrizRA[0][i]
             count += 1
         media = media / count
     
-        #Calculo da variância
+        #Calculo da variÃ¢ncia
         for j in range(indiceFrameCalibragem + 1):
             variancia = variancia + math.pow((matrizRA[0][j] - media), 2)
         variancia = variancia / count
     
-        #Raiz quadrada da variância
+        #Raiz quadrada da variÃ¢ncia
         devPadrao = math.sqrt(variancia)
         return devPadrao
     
-    #Calcular erro padrão
+    #Calcular erro padrÃ£o
     def erroPadrao(self, x, matrizRA):
         if x > 0:
             erroPad = matrizRA[1][x] / math.sqrt(x)

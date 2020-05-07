@@ -41,7 +41,7 @@ class CalibrarPERCLOS(QThread):
         self.threshold = threshold
         self.usuario = nome
         
-        self.arq_predicao = "shape_predictor_68_face_landmarks.dat"
+        self.arq_predicao = "IAs\\shape_predictor_68_face_landmarks.dat"
         self.detector = dlib.get_frontal_face_detector()
         self.predicao = dlib.shape_predictor(self.arq_predicao)
         self.judite = MensagemFalada()
@@ -79,9 +79,9 @@ class CalibrarPERCLOS(QThread):
             if len(retangulos) > 0:
                 self.shape = self.verificarMaiorRetangulo(gray, retangulos)
                 
-                #Pintar os landmark points do rosto
+                #Printa os landmark points do rosto
                 for (x, y) in self.shape:
-                    cv2.circle(rgbImage, (x, y), 4, (0, 0, 255), -1)
+                    cv2.circle(rgbImage, (x, y), 2, (0, 0, 255), -1)
                 
                 #Aquisi��o de dados para calibrar   
                 if (contImgCalibracao < self.framesCalibragem):
@@ -137,7 +137,8 @@ class CalibrarPERCLOS(QThread):
                     
             self.changePixmap.emit(imagemDeExecucao)
             self.contadorLoop.emit(str(fps))
-                
+        cap.release()
+
     def verificarMaiorRetangulo(self, imagemGray, retangulos):
         maiorRetangulo = 0
         

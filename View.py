@@ -159,9 +159,9 @@ class Ui_MainWindow(QWidget):
         self.lbValorMinPERCLOS.setObjectName("lbValorMinPERCLOS")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.lbValorMinPERCLOS)
         
-        self.lbP80 = QtWidgets.QLabel(self.layoutPERCLOS)
-        self.lbP80.setObjectName("lbP80")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.lbP80)
+        self.lbP70 = QtWidgets.QLabel(self.layoutPERCLOS)
+        self.lbP70.setObjectName("lbP70")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.lbP70)
         
         self.txtValorMaxPERCLOS = QtWidgets.QLineEdit(self.layoutPERCLOS)
         self.txtValorMaxPERCLOS.setObjectName("txtValorMaxPERCLOS")
@@ -392,7 +392,7 @@ class Ui_MainWindow(QWidget):
  
         self.lbValorMaxPERCLOS.setText(u"Valor Máx.")
         self.lbValorMinPERCLOS.setText("Valor Mín.")
-        self.lbP80.setText("P80")
+        self.lbP70.setText("P70")
         self.lbMinutosAntesPiscada.setText("min. antes")
         self.lbMaximaPiscada.setText("Máxima")
         self.lbMinimaPiscada.setText("Mínima")
