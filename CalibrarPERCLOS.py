@@ -145,9 +145,9 @@ class CalibrarPERCLOS(QThread):
         for retangulo in retangulos:
             shape = self.predicao(imagemGray, retangulo)
             shape = face_utils.shape_to_np(shape)
-            
+
             #Calcular a distancia do rosto pertinente ao retangulo em an�lise
-            distHorizontalRosto = distance.euclidean((shape[0] + shape[1]) // 2, (shape[16] + shape[17]) // 2) 
+            distHorizontalRosto = distance.euclidean((shape[0] + shape[1]) // 2, (shape[15] + shape[16]) // 2)
             distVerticalRosto = distance.euclidean((shape[19] + shape[24]) // 2, (shape[7] + shape[8] + shape[9]) // 3)
             
             if ((distHorizontalRosto * distVerticalRosto) > maiorRetangulo):

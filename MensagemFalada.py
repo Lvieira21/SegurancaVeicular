@@ -16,11 +16,11 @@ class MensagemFalada(object):
 
     def scriptInicial(self):
         playsound("Mensagens Faladas\\boas-vindas.mp3")
-        time.sleep(16)
+        time.sleep(3)
         playsound("Mensagens Faladas\\auxilio-calibracao.mp3")
-        time.sleep(4)
+        time.sleep(3)
         playsound("Mensagens Faladas\\auxilio-calibracao-olhos-fechados.mp3")
-        time.sleep(8)
+        time.sleep(4)
     
     def scriptContagem(self):
         playsound("Mensagens Faladas\\contar-um.mp3")
@@ -32,7 +32,7 @@ class MensagemFalada(object):
         
     def scriptRegulagemOlhosAbertos(self):
         playsound("Mensagens Faladas\\ok-auxilio-calibracao-olhos-abertos.mp3")
-        time.sleep(10)
+        time.sleep(5)
     
     def scriptFimCalibragem(self):
         tts = gTTS(text='Pronto, calibração finalizada.', lang='pt')
